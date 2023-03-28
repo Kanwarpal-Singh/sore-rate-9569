@@ -11,8 +11,8 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=mongodb&logoColor=4EA94B)
 
 ## Contributors:
-1.Kanwarpal Singh
-2.Manthan Pelne
-3.Kabilan
-4.Kamlesh Das
+1)Kanwarpal Singh
+2)Manthan Pelne
+3)Kabilan
+4)Kamlesh Das
 
