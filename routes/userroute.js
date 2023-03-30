@@ -5,8 +5,23 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const {authMiddleware}=require("../middleware/authentication");
 const {blacklist} = require("../blacklist")
+const redis = require("redis")
+const client=redis.createClient()
+const otp = require("generate-otp")
+
+
+
+client.on("error",(err)=>console.log("Redis client error",err))
+client.connect()
+
+
+const sendgrid = require("@sendgrid/mail");
+sendgrid.setApiKey(process.env.apikey)
+
+
  
 const userRouter = express.Router()
+
 
 
 
@@ -103,6 +118,68 @@ userRouter.post("/sign_up",async(req,res)=>{
     res.send("logout successful")
 
  })
+
+
+
+ //email verification using OTP
+
+userRouter.post("/getotp",async(req,res)=>{
+    try {
+        const {email} = req.body
+        if(!email){
+            return res.status(400).send({"msg":"Enter Email first!"})
+        }
+        const mail = await UserModel.findOne({email})
+        if(!mail){
+            return res.status(400).send({"msg":"User not found, please register again."})
+        }else{
+
+            const generateOtp = otp.generate(4)
+            client.LPUSH("otp",generateOtp.toString())
+            const msg = {
+                to:`${mail.email}`,
+                from:"manthanpelneoo7@gmail.com",
+                subject:"Email Verification",
+                text:"Email Verification",
+                html: `<p>Verify your email using OTP: <h1>${generateOtp}</h1></p>`,
+            }
+            sendgrid
+              .send(msg)
+              .then(() => {}, error => {
+                console.error(error);
+            
+                if (error.response) {
+                  console.error(error.response.body)
+                }
+              });
+            res.send({"msg":"OTP sent successfully!!",generateOtp})
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+
+userRouter.post("/verifyotp",async(req,res)=>{
+    try {
+        let otp = req.body.otp
+        let result = await client.lRange('otp',0,99999999)
+        
+        if(!otp){
+            return res.status(400).send({"msg":"Please insert OTP to verify your Email !!"})
+        }
+        if(otp!==result[0]){
+         return res.status(400).send("Invalid OTP !!")
+        }
+
+    } catch (error) {
+        console.log(error.message)
+    }
+    res.send({"msg":"Email successfully verified..!!"})
+})
+
+
+
   
   ///sample route for checking authentication
  userRouter.get("/details",authMiddleware,(req,res)=>{
