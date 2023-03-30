@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+       background-color: rgb(242, 242, 234);
+      }
+      .height-100 {
+        height: 100vh;
+      }
+      .card {
+        width: 400px;
+        border: none;
+        height: 300px;
+        box-shadow: 0px 5px 20px 0px #d2dae3;
+        z-index: 1;
+        text-align: center;
+        margin: auto;
+        margin-top: 100px;
+        justify-content: center;
+        align-items: center;
+      }
+      .card h6 {
+        padding-top: 40px;
+        color: rgb(183, 173, 173);
+        font-size: 17px;
+        font-family: sans-serif;
+      }
+    
+      .inputs input {
+        width: 40px;
+        height: 40px;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
+      .card-2 {
+        background-color: rgb(242, 242, 234);
+        padding: 10px;
+        width: 350px;
+        height: 100px;
+        bottom: -50px;
+        left: 20px;
+        position: absolute;
+        border-radius: 5px;
+      }
+      .card-2 .content {
+        margin-top: 50px;
+      }
+    
+      .validate {
+        height: 40px;
+        background-color: rgb(94, 151, 123);
+        border: 1px solid rgb(237, 233, 233);
+        width: 140px;
+        margin-top: 30px;
+        color: white;
+        cursor: pointer;
+      }
+      .validate:hover {
+        background-color: rgb(102, 135, 89);
+      }
+      #otp{
+        width: 154px;
+        margin-top: 30px;
+        height: 30px;
+      }
+      #nav{
+            max-width: 100%;
+            height: 150px;
+            border-bottom: 1px solid rgb(190, 183, 183);
+        }
+
+        #nav img{
+            width: 120px;
+            border-radius: 100%;
+            margin-left: 30px;
+
+        }
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      <div><img src="/SHORTS.png" alt=""></div>
+      <div></div>
+  </div>
+    <div
+      class="container height-100 d-flex justify-content-center align-items-center"
+    >
+      <div class="position-relative">
+        <div class="card p-2 text-center">
+          <h6>
+            Please enter the one time password <br />
+            to verify your Email
+          </h6>
+          <div>
+            <span>OTP has been sent to</span>
+            <small>*******@gmail.com</small>
+          </div>
+          <input type="text" id="otp" placeholder="Enter OTP" name="otp">
+          <div class="mt-4">
+            <button id="btn" class="btn btn-danger px-4 validate">Validate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+let button = document.getElementById("btn")
+button.addEventListener("click",(e)=>{
+  let obj={
+    otp:otp.value
+  }
+  async function testOtp(){
+    let validateOtp = await fetch("http://localhost:4500/user/verifyotp",{
+ method:"POST",
+ body:JSON.stringify(obj),
+headers:{ 
+  "Content-type":"application/json",
+}
+ })
+ if(validateOtp.ok){
+  alert("Email verified successfully..")
+ }
+ else{
+  alert("Verification failed")
+ }
+ }
+ testOtp()
+})
+</script>
