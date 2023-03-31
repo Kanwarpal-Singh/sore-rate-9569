@@ -6,7 +6,8 @@ const {connection} = require("./db")
 const cors = require("cors")
 const { urlencoded } = require("express")
 const qrcode = require("qrcode")
-const {qrRouter} = require("./routes/qrRouter")
+const {qrRouter} = require("./routes/qrRouter");
+const passport=require("./google-oauth")
 
 app.use(cors())
 app.use(express.json())
@@ -15,6 +16,18 @@ app.use(urlencoded({extended:false}))
 
 app.use("/user",userRouter)
 app.use("/qr",qrRouter)
+
+///Google-OAuth part
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile','email'] }));
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login',session:false  }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/user');
+  });
 
 
 app.listen(process.env.port,async()=>{
