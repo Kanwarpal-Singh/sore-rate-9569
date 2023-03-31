@@ -21,8 +21,9 @@ body{
     display: flex;
     align-items: center;
     height: 70px;
-    width: 81%;
+    width: 100%;
     position: fixed;
+    margin-left: -132px;
     /* border:1px solid blue; */
     margin-top:-10px;
     font-size: 16px;
@@ -34,21 +35,23 @@ body{
     width: 100px;
     height: 60%;
     /* border:1px solid green; */
-    margin-right: 100px;
+    margin-right: 140px;
+    margin-left: 100px;
 }
 #logo{
     width: 55%;
+    margin-left: 20px;
 }
 /* -------------------dropdown navbar menu------> */
 #nav-mid{
-    width: 40%;
+    width: 30%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     /* border: 1px solid red; */
     gap: 20px;
-    margin-right: 110px;
+    margin-right: 150px;
 }
 .ddmenu {
   /* color: black; */
@@ -235,7 +238,7 @@ body{
 
 #shorten-link{
     width: 123.2%;
-    margin-left:-132px;
+    margin-left:-133px;
     height: 130px;
     background-color: #0B1736;
     align-items: center;
@@ -310,7 +313,7 @@ body{
 
 #link{
     width: 123.2%;
-    margin-left:-132px;
+    margin-left:-133px;
     height: 280px;
     background-color: #0B1736;
     border: 1px solid #0B1736;

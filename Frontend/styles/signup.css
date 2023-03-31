@@ -1,0 +1,122 @@
+*{
+    box-sizing: border-box
+}
+#navbar{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    /* border:1px solid blue; */
+    margin-top:-10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    color:rgb(112, 122, 128)
+}
+#navbar-left{
+    width: 100px;
+    height: 60%;
+    /* border:1px solid green; */
+    margin-right: 100px;
+}
+#space-navbar{
+    height: 70px;
+}
+#logo{
+    width: 55%;
+    margin-left: 20px;
+}
+#parent{
+    border:0px solid red;
+    background-color: white;
+    width:33%;
+    height: 600px;
+    text-align: center;
+    margin: auto;
+    padding-top: 10px;
+    font-family: "proxima nova semibold", "helvetica neue", Helvetica, Arial, sans-serif;
+}
+
+#parent h1{
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 40px;
+    color:rgb(79, 86, 90);
+    margin-top:30px;
+    margin-bottom: 20px;
+}
+
+#join{
+    background-color: black;
+    color: white;
+}
+
+#join>a{
+    color: white;
+    text-decoration: none;
+}
+
+#google>img {
+    width:4%;
+}
+
+#signupnew{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+
+
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 15px 0;
+  display: inline-block;
+  border: 1px solid rgb(211,212,215);
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+label{
+    float: left;
+    color: rgb(88, 87, 87);
+}
+button {
+    width: 100%;
+    height: 40px;
+    margin-top: 30px;
+    background-color:#2A5BD7;
+    color: white;
+    font-size: 15px;
+    border-radius: 3px;
+    border: none;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.seprator{
+   margin: 17px 0;
+   font-size: 16px;
+   font-weight: 300; 
+   position: relative;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .signupbtn {
+    width: 100%;
+  }
+}
