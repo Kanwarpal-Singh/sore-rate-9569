@@ -116,8 +116,9 @@ otp.addEventListener("click",(e)=>{
      if(newotp.ok==true){
         let otp = await newotp.json()
         p.innerText=`OTP sent to ${obj.email} successfully ✓`
-        window.location.href=otpverify.html
-        console.log(otp)
+        setTimeout(() => {
+            window.location.href = "otpverify.html"
+        },2000);
      }else{
         alert("User not found!!")
      }
