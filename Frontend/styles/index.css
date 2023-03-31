@@ -172,7 +172,7 @@ body{
 }
 #platform{
     width: 100%;
-    height: 900px;
+    height: 780px;
     margin: auto;
     text-align: center;
     /* border: 1px solid red; */
@@ -188,7 +188,7 @@ body{
     gap: 10px;
 }
 #tabs>div{
-    width: 30%;
+    width: 31%;
     height: 580px;
     margin: auto;
     text-align: center;
@@ -222,41 +222,150 @@ body{
     margin-top: 15px;
     margin-right: 25px;
 }
+.button-wide{
+    width: 100%;
+    height: 40px;
+    background-color: #2A5BD7;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
 
 #shorten-link{
     width: 123.2%;
     margin-left:-132px;
     height: 130px;
-    border: 1px solid red;
+    background-color: #0B1736;
+    align-items: center;
+    text-align: center;
+}
+#shorten-link>div{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    gap: 70px;
+}
+#shorten-link p {
+    color:rgb(139, 141, 143);
+    margin: auto;
+    margin-top: -10px;
+}
+
+
+#shorten-link-btn{
+    background-color: #1B3987;
+    border: none;
+    border-radius: 5px;
+    /* width: 25%;
+    height: 60px; */
+    padding: 20px 110px;
+    text-align: center;
+    color: white;
+    font-size: large;
+    align-items: center;
+}
+#share-your-link-input{
+    background-color: white;
+    border: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 66%;
+    height: 40px;
+    font-size: large;
 }
 #details{
-    width: 100%;
+    width: 123.2%;
+    margin-left:-132px;
     height: 590px;
-    border: 1px solid red;
+    display: grid;
+    justify-content: end;
 }
-#reviews{
-    width: 100%;
-    height: 590px;
-    border: 1px solid red;
+#details img{
+    width: 99%;
+    margin: auto;
 }
+
 #brands{
-    width: 100%;
-    height: 300px;
-    border: 1px solid red;
+    width: 80%;
+    height: 230px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    /* border: 1px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+
 }
-#faqs{
-    width: 100%;
-    height: 590px;
-    border: 1px solid red;
+#brands h1{
+    margin-top: 100px;
 }
+#brands-img{
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: repeat(5,1fr);
+}
+
 #link{
     width: 123.2%;
     margin-left:-132px;
-    height: 330px;
-    border: 1px solid red;
+    height: 280px;
+    background-color: #0B1736;
+    border: 1px solid #0B1736;
 }
+
+#link>div{
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    width: 80%;
+    color: white;
+    font-weight: 700;
+    /* border: 1px solid green; */
+}
+#link button{
+    margin-top: 20px;
+    background-color: #2A5BD7;
+}
+
 #footer{
     width: 100%;
     height: 465px;
-    border: 1px solid red;
+    border: 0px solid red;
+    display: flex;
+    gap: 20px;
 }
+.footerhead{
+    width: 18%;
+    margin-top: 50px;
+}
+.footer{
+    font-size: 14px;
+}
+.footer p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 8px;
+    color:rgb(112, 122, 128)
+}
+.footer img{
+    width: 40%;
+    margin-top: 20px;
+}
+.footer p{
+    font-size: 13px;
+    line-height: 18px;
+}
+#social-media-links{
+    display: flex;
+    gap: 15px;
+    margin-top: -15px;
+}
+#social-media-links img{
+    width: 10%;
+}
+
+
+
