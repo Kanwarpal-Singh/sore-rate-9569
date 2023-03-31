@@ -7,7 +7,8 @@ const {authMiddleware}=require("../middleware/authentication");
 const {blacklist} = require("../blacklist")
 const redis = require("redis")
 const client=redis.createClient()
-const otp = require("generate-otp")
+const otp = require("generate-otp");
+
 
 
 
@@ -186,7 +187,7 @@ userRouter.post("/verifyotp",async(req,res)=>{
       res.send("details")
  })
 
- userRouter.get("/info",authMiddleware,(req,res)=>{
+ userRouter.get("/",(req,res)=>{
     res.send("info")
 })
 
