@@ -8,7 +8,7 @@ const qrcode = require("qrcode")
 let click=0
 qrRouter.post("/scan",(req,res)=>{
 try {
-    const URL = req.body.URL
+    const {URL,title} = req.body
     if(URL.length===0){
         return res.status(400).send({"msg":"Empty Data!!"})
     }
@@ -16,7 +16,7 @@ try {
     qrcode.toDataURL(URL,(err,src)=>{
         if(src){
             click++
-            res.send({"msg":"Here is your QRcode:",src,click})
+            res.send({"msg":"Here is your QRcode:",src,click,title})
         }
     })
 } catch (error) {
