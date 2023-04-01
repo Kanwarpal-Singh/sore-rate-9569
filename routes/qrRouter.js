@@ -24,7 +24,9 @@ try {
 }
 })
 
-
+qrRouter.get("/get",(req,res)=>{
+    res.send("got it")
+})
 
 
 module.exports = {qrRouter}
