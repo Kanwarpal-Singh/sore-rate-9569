@@ -5,17 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="styles/create.css">
-
-
+    <link rel="stylesheet" href="styles/link.css">
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Create page</title>
+
+    <title>Link page</title>
+
 </head>
 
 <body>
@@ -40,7 +38,7 @@
 
                 <li class="search-box">
                     <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
+                    <input class="searchText" type="text" placeholder="Search...">
                 </li>
 
 
@@ -115,7 +113,7 @@
 
     <section class="home">
         <!-- <div class="text">Dashboard Sidebar</div> -->
-        <header>
+        <header class="header">
             <div class="profile">
                 <div class="profile-logo">
                     <p>K</p>
@@ -124,80 +122,59 @@
             </div>
 
         </header>
-        <div class="url-form">
-            <form class="form urlform">
-                <h1>Create new url</h1>
-                <label for="">Destination</label>
-                <input class="input url main-url" type="text" placeholder="http://www.my_long_url.com">
-                <label for="">Title (optional)</label>
-                <input class="input url title" type="text" placeholder="Add title that you want...">
-                <br>
-                <hr>
-                <br>
-                <div class="btn">
-                    <!-- <button>Create</button> -->
-                    <input class="submit-btn urlbtn" type="submit" value="Create">
-                    <button>Cancel</button>
-                </div>
+        <!-- parent div for url append -->
+        <div class="url-view">
+            <div class="url-child">
+                <h1>Masai school | course</h1>
+                <h2>Short Url :- <span></span></h2>
+                <p> <i class="fa-solid fa-arrow-turn-up fa-rotate-90"></i>
+                    https://app.bitly.com/Bn3sdytEhnx/bitlinks/40qtkTe/details</p>
 
-            </form>
+                <p><i class="fa-regular fa-calendar"></i> March 29, 2023 11:22 AM GMT+5:30 by Kamlesh das</p>
+            </div>
+
+            <div class="url-child">
+                <h1>Masai school | course</h1>
+                <h2>Short Url :- <span></span></h2>
+                <p> <i class="fa-solid fa-arrow-turn-up fa-rotate-90"></i>
+                    https://app.bitly.com/Bn3sdytEhnx/bitlinks/40qtkTe/details</p>
+
+                <p><i class="fa-regular fa-calendar"></i> March 29, 2023 11:22 AM GMT+5:30 by Kamlesh das</p>
+            </div>
         </div>
 
-        <!-- short url display div -->
-        <div class="qr-form">
-            <form class="form qrcode-form">
-                <h1>Create a QR Code</h1>
-                <label for="">Destination</label>
-                <input class="input qr-input" type="text" placeholder="http://www.my_long_url.com" name="URL">
-                <label for="">Title (optional)</label>
-                <input class="input qr-title" type="text" placeholder="Add title that you want..." name="title">
-                <br>
-                <hr>
-                <br>
-                <div class="btn">
-                    <!-- <button>Create</button> -->
-                    <input class="submit-btn qrbtn" type="submit" value="Create">
-                    <button>Cancel</button>
-                </div>
-            </form>
 
-            <div class="qr">
-               
-            </div>   
-        </div>
+
     </section>
-    
-
-    <script>
-        const body = document.querySelector('body'),
-            sidebar = body.querySelector('nav'),
-            toggle = body.querySelector(".toggle"),
-            searchBtn = body.querySelector(".search-box"),
-            modeSwitch = body.querySelector(".toggle-switch"),
-            modeText = body.querySelector(".mode-text");
-
-
-        toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-        })
-
-        searchBtn.addEventListener("click", () => {
-            sidebar.classList.remove("close");
-        })
-
-        modeSwitch.addEventListener("click", () => {
-            body.classList.toggle("dark");
-
-            if (body.classList.contains("dark")) {
-                modeText.innerText = "Light mode";
-            } else {
-                modeText.innerText = "Dark mode";
-
-            }
-        });
-    </script>
-
 </body>
 
 </html>
-<script src="scripts/create.js"></script>
+<script>
+    const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    })
+
+    searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+    })
+
+    modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+            modeText.innerText = "Light mode";
+        } else {
+            modeText.innerText = "Dark mode";
+
+        }
+    });
+</script>
+<script src="scripts/link.js"></script>
