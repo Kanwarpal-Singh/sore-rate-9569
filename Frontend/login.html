@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/signup.css">
+</head>
+<body>
+    <div id="navbar">
+        <div id="navbar-left">
+            <img id="logo" src="../SHORTS.png" alt="Hello">
+        </div>
+    </div>
+    <div id="space-navbar"></div>
+    <div id="parent">
+        <h1>Log In and start shortening</h1>
+        <div id="signupnew">
+            Don't have an account? <a href="signup.html">Signup</a>
+        </div>
+        <button id="google"><img src="https://cdn-icons-png.flaticon.com/128/300/300221.png" alt=""> Signin with Google</button>
+        <p class="separator t-center">
+            <span>Or</span>
+        </p>
+        <form action="login">
+            <label for="email"><b>Email Address</b></label>
+            <input type="email" name="email" required>
+            <label for="pass"><b>Password</b></label>
+            <input type="password" name="pass" required>
+            <button type="submit" class="signupbtn">Login</button>
+        </form>
+        <!-- <p class="separator t-center"> -->
+            <span>Or</span>
+        <!-- </p> -->
+        <button id="otpbtn" onclick="otppage()"> Login with OTP</button>
+        <p class="separator t-center">
+        <div class="switch terms-and-conditions" style="margin-top: 0px;">
+            <span>By 
+                <span class="to-sign-up">signing in with</span>
+                an account, you agree to 
+                <br>Bitly's
+                <a href="" id="terms-of-service-link">Terms of Service</a>, 
+                <a href="" id="privacy-policy-link">Privacy Policy</a> and 
+                <a href="" id="acceptable-use-link">Acceptable Use Policy.</a>
+            </span>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script >
+function otppage(){
+    window.location.href = "otpverify.html"
+}
+</script>
