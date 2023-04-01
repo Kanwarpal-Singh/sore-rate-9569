@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="styles/create.css">
+
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Create page</title>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="image/SHORTS.png" alt="">
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">Shorts</span>
+                    <span class="profession">URL Shortner</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="create.html">
+                            <!-- <i class='bx bx-home-alt icon' ></i> -->
+                            <i style="color: #fff;" class="fa-solid fa-plus icon"></i>
+                            <span style="color: #fff;" class="text nav-text">Create new</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <!-- <i class='bx bx-home-alt icon' ></i> -->
+                            <i class="fa-solid fa-house icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="link.html">
+                            <!-- <i class='bx bx-bar-chart-alt-2 icon' ></i> -->
+                            <i class="fa-solid fa-link icon"></i>
+                            <span class="text nav-text">Links</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="qrcode.html">
+                            <!-- <i class='bx bx-bell icon'></i> -->
+                            <i class="fa-solid fa-qrcode icon"></i>
+                            <span class="text nav-text">QR Codes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <!-- <i class='bx bx-pie-chart-alt icon' ></i> -->
+                            <i class="fa-solid fa-regular fa-gear icon"></i>
+                            <span class="text nav-text">Setting</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <!-- <i class='bx bx-log-out icon' ></i> -->
+                        <i class="fa-solid fa-right-from-bracket fa-rotate-180 icon"></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <!-- <div class="text">Dashboard Sidebar</div> -->
+        <header>
+            <div class="profile">
+                <div class="profile-logo">
+                    <p>K</p>
+                </div>
+                <p style="padding-left: 5px;">Kamlesh Das</p>
+            </div>
+
+        </header>
+        <div class="url-form">
+            <form class="form urlform">
+                <h1>Create new url</h1>
+                <label for="">Destination</label>
+                <input class="input url main-url" type="text" placeholder="http://www.my_long_url.com">
+                <label for="">Title (optional)</label>
+                <input class="input url title" type="text" placeholder="Add title that you want...">
+                <br>
+                <hr>
+                <br>
+                <div class="btn">
+                    <!-- <button>Create</button> -->
+                    <input class="submit-btn urlbtn" type="submit" value="Create">
+                    <button>Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- short url display div -->
+        <div class="qr-form">
+            <form class="form qrcode-form">
+                <h1>Create a QR Code</h1>
+                <label for="">Destination</label>
+                <input class="input qr-input" type="text" placeholder="http://www.my_long_url.com">
+                <label for="">Title (optional)</label>
+                <input class="input qr-title" type="text" placeholder="Add title that you want...">
+                <br>
+                <hr>
+                <br>
+                <div class="btn">
+                    <!-- <button>Create</button> -->
+                    <input class="submit-btn qrbtn" type="submit" value="Create">
+                    <button>Cancel</button>
+                </div>
+            </form>
+
+            <div class="qr-code-view">
+                <h2>Preview</h2>
+                <div class="img">
+                    <img src="https://th.bing.com/th/id/R.b9f2cc59366029f5de3e84b64c44558f?rik=MZz%2foLKgcoGIlQ&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2%2fQR-Code-PNG-Image-HD.png&ehk=O2LJMlu2EBW4TnMq4rZJEyJcvBQxzirkGORdypBOVbI%3d&risl=&pid=ImgRaw&r=0" alt="">
+                </div>
+            </div>   
+        </div>
+    </section>
+    
+
+    <script>
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
+
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        })
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Light mode";
+            } else {
+                modeText.innerText = "Dark mode";
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+<script src="scripts/create.js"></script>
