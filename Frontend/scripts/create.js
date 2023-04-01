@@ -10,7 +10,7 @@ url_form.addEventListener("submit", (e) => {
         title: title_input.value
 
     }
-    fetch("http://localhost:4500/url/data", {
+    fetch("http://localhost:9090/url/data", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -29,8 +29,6 @@ url_form.addEventListener("submit", (e) => {
         })
         .catch(err => console.log(err))
 
-
-
 })
 
 
@@ -48,7 +46,7 @@ form.addEventListener("submit",(e)=>{
         title:title.value
     }
     async function getQrcode(){
-        let getqr = await fetch("http://localhost:4500/qr/scan",{
+        let getqr = await fetch("http://localhost:9090/qr/scan",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{

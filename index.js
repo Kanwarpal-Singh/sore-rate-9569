@@ -7,6 +7,7 @@ const cors = require("cors")
 const { urlencoded } = require("express")
 const qrcode = require("qrcode")
 const {qrRouter} = require("./routes/qrRouter");
+const{urlRouter}=require("./routes/url.router")
 const passport=require("./google-oauth")
 const cookieParser = require("cookie-parser")
 
@@ -19,6 +20,7 @@ app.use(urlencoded({extended:false}))
 app.use(cookieParser())
 app.use("/user",userRouter)
 app.use("/qr",qrRouter)
+app.use("/url",urlRouter)
 
 ///Google-OAuth part
 
