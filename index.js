@@ -8,12 +8,15 @@ const { urlencoded } = require("express")
 const qrcode = require("qrcode")
 const {qrRouter} = require("./routes/qrRouter");
 const passport=require("./google-oauth")
+const cookieParser = require("cookie-parser")
+
 
 app.use(cors())
 app.use(express.json())
 app.use(urlencoded({extended:false}))
 
 
+app.use(cookieParser())
 app.use("/user",userRouter)
 app.use("/qr",qrRouter)
 
@@ -26,7 +29,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login',session:false  }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/user');
+    res.redirect('/qr/get');
   });
 
 

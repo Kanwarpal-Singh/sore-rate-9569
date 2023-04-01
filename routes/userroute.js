@@ -5,19 +5,15 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const {authMiddleware}=require("../middleware/authentication");
 const {blacklist} = require("../blacklist")
-const redis = require("redis")
-const client=redis.createClient()
+
 const otp = require("generate-otp");
+const cookieParser = require("cookie-parser")
 
-
-
-
-client.on("error",(err)=>console.log("Redis client error",err))
-client.connect()
 
 
 const sendgrid = require("@sendgrid/mail");
 sendgrid.setApiKey(process.env.apikey)
+
 
 
  
@@ -136,7 +132,9 @@ userRouter.post("/getotp",async(req,res)=>{
         }else{
 
             const generateOtp = otp.generate(4)
-            client.LPUSH("otp",generateOtp.toString())
+            
+          res.cookie("otp",generateOtp)
+            //client.LPUSH("otp",generateOtp.toString())
             const msg = {
                 to:`${mail.email}`,
                 from:"manthanpelneoo7@gmail.com",
@@ -164,12 +162,12 @@ userRouter.post("/getotp",async(req,res)=>{
 userRouter.post("/verifyotp",async(req,res)=>{
     try {
         let otp = req.body.otp
-        let result = await client.lRange('otp',0,99999999)
-        
+        let result = req.cookies.otp
+
         if(!otp){
             return res.status(400).send({"msg":"Please insert OTP to verify your Email !!"})
         }
-        if(otp!==result[0]){
+        if(otp!==result){
          return res.status(400).send("Invalid OTP !!")
         }
 
