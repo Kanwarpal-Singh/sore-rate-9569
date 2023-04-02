@@ -1,4 +1,29 @@
 // display all data
+let username=document.getElementById("username")
+let userfirstname = document.getElementById("userfirstname");
+let user_name = localStorage.getItem("username")
+
+window.addEventListener("load", myScript);
+function myScript(){
+  
+    console.log(user_name)
+    
+    let string = user_name[0].toUpperCase()
+    for(let i=1;i<user_name.length;i++){
+        string+=user_name[i]
+    }
+    if(username===null){
+        username.innerHTML= ""
+        userfirstname.innerHTML = "";
+    }else{
+        username.innerHTML = `${string}`
+        userfirstname.innerHTML = `${string[0]}`
+    } 
+}
+let str=user_name[0]
+for(let i=1;i<user_name.length;i++){
+    str+=user_name[i]
+}
 const showdata = () => {
     fetch("http://localhost:9090/url/", {
         headers: {
@@ -48,7 +73,7 @@ function displaydata(data) {
             <h1 class="title">${element.title}</h1>
             <h3><span>localhost:9090/url/${element.shortId}</span></h3>
             <p> <i class="fa-solid fa-arrow-turn-up fa-rotate-90"></i> ${element.redirectURL}</p>
-            <p><i class="fa-regular fa-calendar"></i> ${targetDateString} by Kamlesh das</p>
+            <p><i class="fa-regular fa-calendar"></i> ${targetDateString} by ${str}</p>
             <i class="fa-solid fa-trash delete-btn"></i>
            
         </div>
@@ -133,7 +158,7 @@ function displaySearchData(data) {
             <h1 class="title">${element.title}</h1>
             <h3><span>localhost:9090/url/${element.shortId}</span></h3>
             <p> <i class="fa-solid fa-arrow-turn-up fa-rotate-90"></i> ${element.redirectURL}</p>
-            <p><i class="fa-regular fa-calendar"></i> ${targetDateString} by Kamlesh das</p>
+            <p><i class="fa-regular fa-calendar"></i> ${targetDateString} by ${str}</p>
             <i class="fa-solid fa-trash delete-btn"></i>
         </div>
       `;
@@ -224,7 +249,7 @@ function displayDelete(data) {
             <h1 class="title">${element.title}</h1>
             <h3><span>localhost:9090/url/${element.shortId}</span></h3>
             <p> <i class="fa-solid fa-arrow-turn-up fa-rotate-90"></i> ${element.redirectURL}</p>
-            <p><i class="fa-regular fa-calendar"></i> ${targetDateString} by Kamlesh das</p>
+            <p><i class="fa-regular fa-calendar"></i> ${targetDateString} by ${str}</p>
             <i class="fa-solid fa-trash delete-btn"></i>
         </div>
       `;
