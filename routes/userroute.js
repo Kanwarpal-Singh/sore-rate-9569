@@ -56,38 +56,30 @@ userRouter.post("/sign_up",async(req,res)=>{
 
 
  userRouter.post("/sign_in",async(req,res)=>{
-    try{
        const {email,password}=req.body;
-
+    try{
        const user=await UserModel.findOne({email})
-
-       if(!user){
-        res.send({"msg":"Invalid email"})
-       }
-
-       const isPasswordMatch=await bcrypt.compare(password, user.password);
-
-       if(!isPasswordMatch){
-        res.send("enter valid credentials")
-       }
-
-       ///create token
-
-       const token=jwt.sign({ userID: user._id }, process.env.jwtKey , { expiresIn: "10m" });
-
-       ///create refresh token
-
-       const refreshToken=jwt.sign({ userID: user._id }, process.env.refreshJwtKey , { expiresIn: 300 });
-
-       res.send({"msg":"Login successful","token":token,"refreshToken":refreshToken})
-
-    }
-    catch(err){
-        console.log(err)
-    }
- })
-
- ///creating a new normal token  
+       if(user){
+          await bcrypt.compare(password, user.password,(err,result)=>{
+            if(result){
+                const token=jwt.sign({ userID: user._id }, process.env.jwtKey , { expiresIn: "10m" });
+                const refreshToken=jwt.sign({ userID: user._id }, process.env.refreshJwtKey , { expiresIn: 300 });
+                res.send({"msg":"Login Successfull","token":token,"refreshToken":refreshToken})
+            }else{
+                res.send({"error":"Please Check you Password!"})
+                console.log("err")
+            }
+          });
+        }else{
+           res.send("User Not Found!")
+            console.log("Please sign up first!")
+        }
+    }catch(error){
+        console.log("error:",error) 
+        res.send("error:",error)
+    } 
+ })       
+ 
 
  userRouter.get("/getnewtoken",(req,res)=>{
 
