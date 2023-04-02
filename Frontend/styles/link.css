@@ -374,6 +374,14 @@ body.dark .home .text{
 .header{
     z-index: 100;
 }
+.delete-btn{
+    position:relative;  
+    cursor: pointer;
+    left:90%;
+}
+.delete-btn:hover{
+    color:red
+}
 
 
 @media only screen and (min-width: 300px) and (max-width: 540px) {
