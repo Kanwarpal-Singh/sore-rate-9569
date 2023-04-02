@@ -63,7 +63,7 @@ urlRouter.get("/:shortId", async (req, res) => {
 
 urlRouter.get("/", async (req, res) => {
   try {
-    const entry = await urlModel.find({})
+    const entry = await urlModel.find({}).sort({createdAt:-1})
     let inputDate = new Date(entry[0].createdAt)
     // define the target time zone identifier
     const targetTimeZone = 'Asia/Kolkata';
