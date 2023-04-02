@@ -60,23 +60,23 @@ userRouter.post("/sign_up",async(req,res)=>{
     try{
        const user=await UserModel.findOne({email})
        if(user){
-          await bcrypt.compare(password, user.password,(err,result)=>{
+        bcrypt.compare(password, user.password,(err,result)=>{
             if(result){
                 const token=jwt.sign({ userID: user._id }, process.env.jwtKey , { expiresIn: "10m" });
                 const refreshToken=jwt.sign({ userID: user._id }, process.env.refreshJwtKey , { expiresIn: 300 });
-                res.send({"msg":"Login Successfull","token":token,"refreshToken":refreshToken})
+                res.status(200).send({"msg":"Login Successfull","token":token,"refreshToken":refreshToken,user})
             }else{
-                res.send({"error":"Please Check you Password!"})
+                res.status(400).send({"error":"Please Check you Password!"})
                 console.log("err")
             }
           });
         }else{
-           res.send("User Not Found!")
+           res.status(400).send({msg:"User Not Found!"})
             console.log("Please sign up first!")
         }
     }catch(error){
         console.log("error:",error) 
-        res.send("error:",error)
+        res.status(400).send("error:",error)
     } 
  })       
  
@@ -112,8 +112,6 @@ userRouter.post("/sign_up",async(req,res)=>{
     fs.writeFileSync("./blacklist.json", JSON.stringify(blacklisteddata))
     res.send({"msg":"Logout Successfull"})
 })
-
-
 
  //email verification using OTP
 

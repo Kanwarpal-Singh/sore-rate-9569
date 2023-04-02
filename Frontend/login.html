@@ -27,8 +27,8 @@
             <label for="email"><b>Email Address</b></label>
             <input type="email" name="email" id="email" required>
             <label for="pass"><b>Password</b></label>
-            <input type="password" name="pass" id="pass" required>
-            <button type="submit" onclick="onLogin()" class="signupbtn">Login</button>
+            <input type="password" name="password" id="pass" required>
+            <button type="submit"  class="signupbtn" id="signupbtn">Login</button>
         </div>
         <!-- <p class="separator t-center"> -->
             <span>Or</span>
@@ -54,27 +54,43 @@ function otppage(){
     window.location.href = "verifymail.html"
 }
 
-const onLogin = ()=>{
-        const payload ={
-        email:document.getElementById("email").value,
-        pass:document.getElementById("pass").value
+let email = document.getElementById("email")
+let pass = document.getElementById("pass")
+
+let btn = document.getElementById("signupbtn")
+btn.addEventListener("click",(e)=>{
+    const payload = {
+        email:email.value,
+        password:pass.value
+    }
+    console.log(payload)
+    async function loginfun(){
+            let data = await fetch("http://localhost:9090/user/sign_in",{
+                method:"POST",
+                body:JSON.stringify(payload),
+                headers:{
+                    "Content-type":"application/json"
+                },
+                        })
+                     if(data.ok){
+                        let logdata = await data.json()
+                        console.log(logdata)
+                        localStorage.removeItem("username")
+                        localStorage.setItem("token",logdata.token)
+                        localStorage.setItem("username",logdata.user.username)
+                        alert("Login successfull")
+                        window.location.href ="create.html"
+                     }else{
+                        alert("Wrong credentials")
+                     }
+            
         }
-        console.log(payload)
-        fetch("http://localhost:9090/user/sign_in",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(payload)
-        }).then(res=>res.json())
-        .then(res=>{
-            console.log(res)
-            localStorage.setItem("token",res.token)
-            alert("Login Successful")
-            window.location.href = "create.html"
-        })
-        .catch(err=>console.log(err))
-    }    
+        loginfun()
+})
+
+    
+       
+       
     
 
 </script>

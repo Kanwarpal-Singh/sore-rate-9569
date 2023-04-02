@@ -88,7 +88,7 @@
             </div>
 
             <div class="bottom-content">
-                <li class="">
+                <li onclick="onLogout()" class="">
                     <a href="">
                         <!-- <i class='bx bx-log-out icon' ></i> -->
                         <i class="fa-solid fa-right-from-bracket fa-rotate-180 icon"></i>
@@ -118,9 +118,9 @@
         <header>
             <div class="profile">
                 <div class="profile-logo">
-                    <p>K</p>
+                    <p id="userfirstname">U</p>
                 </div>
-                <p style="padding-left: 5px;">Kamlesh Das</p>
+                <p id="username" style="padding-left: 5px;">Username</p>
             </div>
 
         </header>
@@ -202,6 +202,42 @@
 </html>
 <script src="scripts/create.js">
    
+</script>
+<script>
+    function onLogout(){
+        async function logoutfun(){
+            let log = await fetch("http://localhost:9090/user/logout",{
+                method:"GET",
+                headers:{
+                    "Content-type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                },
+            })
+            console.log(log)
+        }
+        logoutfun()
+    }
+    window.addEventListener("load", myScript);
+    function myScript(){
+        let user_name = localStorage.getItem("username")
+        console.log(user_name)
+        
+        let userfirstname = document.getElementById("userfirstname");
+        let username = document.getElementById("username");
+        let string = user_name[0].toUpperCase()
+        for(let i=1;i<user_name.length;i++){
+            string+=user_name[i]
+        }
+        if(username===null){
+            username.innerHTML= ""
+            userfirstname.innerHTML = "";
+        }else{
+            username.innerHTML = `${string}`
+            userfirstname.innerHTML = `${string[0]}`
+        } 
+    
+    }
+    
 </script>
 
 <!-- <script>

@@ -165,7 +165,23 @@ main.addEventListener("click", (event) => {
     .then(res=>res.json())
     .then((res)=>{
       console.log(res)
-       displayDelete(res)
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this link!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Poof! Your generated link has been deleted!", {
+            icon: "success",
+          });displayDelete(res)
+        } else {
+          swal("Your generated link is safe!");
+        }
+      });
+       
     })
     .catch((err)=>console.log(err))
     
