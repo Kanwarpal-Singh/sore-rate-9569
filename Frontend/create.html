@@ -88,10 +88,10 @@
             </div>
 
             <div class="bottom-content">
-                <li onclick="onLogout()" class="">
+                <li class="">
                     <a href="">
                         <!-- <i class='bx bx-log-out icon' ></i> -->
-                        <i class="fa-solid fa-right-from-bracket fa-rotate-180 icon"></i>
+                        <i id="onclickk" class="fa-solid fa-right-from-bracket fa-rotate-180 icon"></i>
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
@@ -204,26 +204,15 @@
    
 </script>
 <script>
-    function onLogout(){
-        async function logoutfun(){
-            let log = await fetch("http://localhost:9090/user/logout",{
-                method:"GET",
-                headers:{
-                    "Content-type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                },
-            })
-            console.log(log)
-        }
-        logoutfun()
-    }
+  
+    let userfirstname = document.getElementById("userfirstname");
+    let username = document.getElementById("username");
+
     window.addEventListener("load", myScript);
     function myScript(){
         let user_name = localStorage.getItem("username")
         console.log(user_name)
         
-        let userfirstname = document.getElementById("userfirstname");
-        let username = document.getElementById("username");
         let string = user_name[0].toUpperCase()
         for(let i=1;i<user_name.length;i++){
             string+=user_name[i]
@@ -235,8 +224,29 @@
             username.innerHTML = `${string}`
             userfirstname.innerHTML = `${string[0]}`
         } 
-    
     }
+
+    const cl = document.getElementById("onclickk")
+    cl.addEventListener("click",(e)=>{
+        e.preventDefault()
+        async function logoutfun(){
+            let log = await fetch("http://localhost:9090/user/logout",{
+                method:"GET",
+                headers:{
+                    "Content-type": "application/json",
+                    Authorization: `${localStorage.getItem("token")}`
+                },
+            })
+            if(log.ok){
+             localStorage.removeItem("token")
+             alert("Logout successfull..!!")
+              localStorage.removeItem("username")
+            }
+        }
+        logoutfun()
+    })
+
+  
     
 </script>
 
