@@ -5,10 +5,13 @@ require("dotenv").config();
 const jwt = require('jsonwebtoken');
 const {authMiddleware}=require("../middleware/authentication");
 const {blacklist} = require("../blacklist")
+const {otpmodel} = require("../models/otpmodel")
 
 const otp = require("generate-otp");
 const cookieParser = require("cookie-parser")
+const nodemailer = require("nodemailer")
 
+const fs = require("fs")
 
 
 const sendgrid = require("@sendgrid/mail");
@@ -70,7 +73,7 @@ userRouter.post("/sign_up",async(req,res)=>{
 
        ///create token
 
-       const token=jwt.sign({ userID: user._id }, process.env.jwtKey , { expiresIn: 60 });
+       const token=jwt.sign({ userID: user._id }, process.env.jwtKey , { expiresIn: "10m" });
 
        ///create refresh token
 
@@ -110,11 +113,13 @@ userRouter.post("/sign_up",async(req,res)=>{
  
  ///sign_out route
 
- userRouter.get("/sign_out",(req,res)=>{
-    blacklist.push(req.headers?.authorization?.split(' ')[1]);
-    res.send("logout successful")
-
- })
+ userRouter.get("/logout", (req, res) => {
+    const token = req.headers.authorization
+    const blacklisteddata = JSON.parse(fs.readFileSync("./blacklist.json", "utf-8"))
+    blacklisteddata.push(token)
+    fs.writeFileSync("./blacklist.json", JSON.stringify(blacklisteddata))
+    res.send({"msg":"Logout Successfull"})
+})
 
 
 
@@ -127,31 +132,43 @@ userRouter.post("/getotp",async(req,res)=>{
             return res.status(400).send({"msg":"Enter Email first!"})
         }
         const mail = await UserModel.findOne({email})
+       
         if(!mail){
             return res.status(400).send({"msg":"User not found, please register again."})
         }else{
 
-            const generateOtp = otp.generate(4)
-            
-          res.cookie("otp",generateOtp)
-            //client.LPUSH("otp",generateOtp.toString())
-            const msg = {
-                to:`${mail.email}`,
-                from:"manthanpelneoo7@gmail.com",
-                subject:"Email Verification",
-                text:"Email Verification",
-                html: `<p>Verify your email using OTP: <h1>${generateOtp}</h1></p>`,
-            }
-            sendgrid
-              .send(msg)
-              .then(() => {}, error => {
-                console.error(error);
-            
-                if (error.response) {
-                  console.error(error.response.body)
+            const generateOtp = otp.generate(4) 
+            const otpdata = new otpmodel({
+             otp:generateOtp
+            })
+            await otpdata.save()
+            //res.cookie("otp",generateOtp)
+
+          
+            let mailTransporter = nodemailer.createTransport({
+                service:"gmail",
+                auth:{
+                    user:"manthanpelneoo7@gmail.com",
+                    pass:process.env.pass
                 }
-              });
-            res.send({"msg":"OTP sent successfully!!",generateOtp})
+            })
+            let details = {
+                from:"manthanpelneoo7@gmail.com",
+                to:`${mail.email}`,
+                subject:"Verify Email using OTP",
+                text:"Validate Email:",
+                html:`<p>Verify your Email using OTP: <h2>${generateOtp}</h2></p>`
+            }
+
+            mailTransporter.sendMail(details,(err)=>{
+                if(err){
+                    console.log("It has an error",err)
+                }else{
+                    console.log("email has sent")
+                }
+            })
+
+            res.send({"msg":"OTP sent successfully!!",generateOtp,otpdata})
         }
     } catch (error) {
         console.log(error.message)
@@ -162,19 +179,24 @@ userRouter.post("/getotp",async(req,res)=>{
 userRouter.post("/verifyotp",async(req,res)=>{
     try {
         let otp = req.body.otp
-        let result = req.cookies.otp
-
+        // // let result = req.cookies.otp
+        // //  console.log(result)
         if(!otp){
             return res.status(400).send({"msg":"Please insert OTP to verify your Email !!"})
         }
-        if(otp!==result){
-         return res.status(400).send("Invalid OTP !!")
+    
+        let checkotp = await otpmodel.findOne({otp})
+        if(!checkotp){
+            return res.status(400).send({"msg":"Incorrect OTP. Please try again"})
         }
 
+        if(otp!==checkotp.otp){
+         return res.status(400).send({"msg":"Invalid OTP!!"})
+        }
+        res.send({"msg":"Email successfully verified..!!",checkotp})
     } catch (error) {
         console.log(error.message)
     }
-    res.send({"msg":"Email successfully verified..!!"})
 })
 
 
