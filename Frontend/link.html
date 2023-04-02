@@ -181,26 +181,7 @@
 <script src="scripts/link.js"></script>
 <script>
   
-    let userfirstname = document.getElementById("userfirstname");
-    let username = document.getElementById("username");
-
-    window.addEventListener("load", myScript);
-    function myScript(){
-        let user_name = localStorage.getItem("username")
-        console.log(user_name)
-        
-        let string = user_name[0].toUpperCase()
-        for(let i=1;i<user_name.length;i++){
-            string+=user_name[i]
-        }
-        if(username===null){
-            username.innerHTML= ""
-            userfirstname.innerHTML = "";
-        }else{
-            username.innerHTML = `${string}`
-            userfirstname.innerHTML = `${string[0]}`
-        } 
-    }
+  
 
     const cl = document.getElementById("onclickk")
     cl.addEventListener("click",(e)=>{
