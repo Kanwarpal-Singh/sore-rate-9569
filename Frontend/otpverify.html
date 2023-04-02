@@ -115,26 +115,29 @@
   </body>
 </html>
 <script>
-let button = document.getElementById("btn")
+ let otp = document.getElementById("otp")
+let button = document.querySelector(".btn")
+
 button.addEventListener("click",(e)=>{
   let obj={
     otp:otp.value
   }
   async function testOtp(){
-    let validateOtp = await fetch("http://localhost:4500/user/verifyotp",{
+    let validateOtp = await fetch("http://localhost:9090/user/verifyotp",{
  method:"POST",
  body:JSON.stringify(obj),
 headers:{ 
   "Content-type":"application/json",
 }
  })
- if(validateOtp.ok){
-  alert("Email verified successfully..")
-  window.location.href = "index.html"
- }
- else{
-  alert("Verification failed")
- }
+if(validateOtp.ok){
+  alert("Email successfully verified. Keep exploring :)")
+  setTimeout(() => {
+            window.location.href = "index.html"
+        },2000);
+}else{
+  alert("User not verified, Please try again")
+}
  }
  testOtp()
 })

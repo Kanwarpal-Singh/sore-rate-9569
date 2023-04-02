@@ -10,7 +10,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(null, user);
+      return cb(null, profile);
     // });
   }
 ));
