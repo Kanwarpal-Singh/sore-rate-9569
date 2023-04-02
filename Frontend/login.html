@@ -23,13 +23,13 @@
         <p class="separator t-center">
             <span>Or</span>
         </p>
-        <form action="login">
+        <div id="login">
             <label for="email"><b>Email Address</b></label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" id="email" required>
             <label for="pass"><b>Password</b></label>
-            <input type="password" name="pass" required>
-            <button type="submit" class="signupbtn">Login</button>
-        </form>
+            <input type="password" name="pass" id="pass" required>
+            <button type="submit" onclick="onLogin()" class="signupbtn">Login</button>
+        </div>
         <!-- <p class="separator t-center"> -->
             <span>Or</span>
         <!-- </p> -->
@@ -51,6 +51,30 @@
 </html>
 <script >
 function otppage(){
-    window.location.href = "otpverify.html"
+    window.location.href = "verifymail.html"
 }
+
+const onLogin = ()=>{
+        const payload ={
+        email:document.getElementById("email").value,
+        pass:document.getElementById("pass").value
+        }
+        console.log(payload)
+        fetch("http://localhost:9090/user/sign_in",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(payload)
+        }).then(res=>res.json())
+        .then(res=>{
+            console.log(res)
+            localStorage.setItem("token",res.token)
+            alert("Login Successful")
+            window.location.href = "create.html"
+        })
+        .catch(err=>console.log(err))
+    }    
+    
+
 </script>

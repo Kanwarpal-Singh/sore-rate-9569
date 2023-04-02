@@ -23,15 +23,15 @@
         <p class="separator t-center">
             <span>Or</span>
         </p>
-        <form action="signup">
+        <div id="signup">
             <label for="email"><b>Email Address</b></label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" id="email" required>
             <label for="user-name"><b>User Name</b></label>
-            <input type="text" name="user-name" required>
+            <input type="text" name="user-name" id="username" required>
             <label for="pass"><b>Password</b></label>
-            <input type="password" name="pass" required>
-            <button type="submit" class="signupbtn">Sign Up with Email</button>
-        </form>
+            <input type="password" name="pass" id="pass" required>
+            <button type="submit" onclick="onSignup()" class="signupbtn">Sign Up with Email</button>
+        </div>
         <div class="switch terms-and-conditions" style="margin-top: 0px;">
             <span>By 
                 <span class="to-sign-up">signing in with</span>
@@ -47,3 +47,28 @@
     
 </body>
 </html>
+<script>
+    const onSignup = ()=>{
+
+        const payload ={
+        username:document.getElementById("username").value,
+        email:document.getElementById("email").value,
+        password:document.getElementById("pass").value,
+        }
+        console.log(payload)
+        fetch("http://localhost:9090/user/sign_up",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(payload)
+        }).then(res=>res.json())
+        .then(res=>{
+            console.log(res)
+            alert(`You have been succesfully signed Up with our website Mr. ${payload.username}`)
+            window.location.href ="login.html"
+        })
+        .catch(err=>console.log(err))
+    }
+    
+</script> 
