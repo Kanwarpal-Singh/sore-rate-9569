@@ -96,6 +96,15 @@ urlRouter.get("/", async (req, res) => {
   }
 })
 
+//..............delete functionality................
+urlRouter.delete("/delete",async(req,res)=>{
+    let data=req.body.title;
+    console.log(data)
+    await urlModel.findOneAndDelete({"title":data})
+    let urldata= await urlModel.find({}).sort({createdAt:-1})
+    res.send(urldata)
+})
+
 
 
 
