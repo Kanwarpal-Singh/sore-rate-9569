@@ -41,10 +41,10 @@ Description:- Shorts is a website where a user can get rid of long links and eas
 
 ## Landing Page
 ![](https://i.ibb.co/TY2mBhd/Screenshot-2023-04-03-130554.png)
-![](https://i.ibb.co/WKTXkz0/Screenshot-2023-04-03-130650.png)
-![](https://i.ibb.co/GkHNbws/Screenshot-2023-04-03-130705.png)
-![](https://i.ibb.co/ZM4DsY3/Screenshot-2023-04-03-130717.png)
-![](https://i.ibb.co/7W8nygv/Screenshot-2023-04-03-130736.png)
+![](https://i.ibb.co/RPhrWq2/Screenshot-2023-04-03-182126.png)
+![](https://i.ibb.co/k5jZ5Mb/Screenshot-2023-04-03-183109.png)
+![](https://i.ibb.co/X7YSLv8/Screenshot-2023-04-03-181825.png)
+![](https://i.ibb.co/XWM10pD/Screenshot-2023-04-03-183246.png)
 
 ## SignUp Page
 ![](https://i.ibb.co/684nmGQ/Screenshot-2023-04-03-161610.png)
