@@ -2,7 +2,7 @@
 Description:- Shorts is a website where a user can get rid of long links and easily create short links for every website or url, and also we provide the service to create URLs and use them everywhere for FREE of cost.
 
 ## Contributors:
-1) Kanwarpal Singh (Landing Page, Login-SignUP Frontend)
+1) Kanwarpal Singh (Landing Page, Login-SignUP-Frontend,Integretion, README.md,Backend dubugging)
 2) Manthan Pelne (Otp verification, QR generator Backend)
 3) Kabilan (Login,Signup Backend functionality)
 4) Kamlesh Das (Dashboard, Link Frontend-Backend,DarkMode)
@@ -21,23 +21,23 @@ Description:- Shorts is a website where a user can get rid of long links and eas
 
 
 ## NPM Packages which we have installed:
-1) "@sendgrid/mail": "^7.7.0",
-2) "bcrypt": "^5.1.0",
-3) "blacklist": "^1.1.4",
-4) "cookie-parser": "^1.4.6",
-5) "cors": "^2.8.5",
-6) "dotenv": "^16.0.3",
-7) "express": "^4.18.2",
-8) "generate-otp": "^1.0.6",
-9) "jsonwebtoken": "^9.0.0",
-10) "mongoose": "^7.0.3",
-11) "nodemailer": "^6.9.1",
-12) "nodemon": "^2.0.22",
-13) "passport": "^0.6.0",
-14) "passport-google-oauth20": "^2.0.0",
-15) "qrcode": "^1.5.1",
-16) "server": "^1.0.38",
-17) "shortid": "^2.2.16"
+1) "@sendgrid/mail"
+2) "bcrypt"
+3) "blacklist"
+4) "cookie-parser"
+5) "cors
+6) "dotenv"
+7) "express"
+8) "generate-otp
+9) "jsonwebtoken
+10) "mongoose
+11) "nodemailer
+12) "nodemon"
+13) "passport
+14) "passport-google-oauth20
+15) "qrcode
+16) "server"
+17) "shortid"
 
 ## Landing Page
 ![](https://i.ibb.co/TY2mBhd/Screenshot-2023-04-03-130554.png)
