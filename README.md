@@ -2,7 +2,7 @@
 Description:- Shorts is a website where a user can get rid of long links and easily create short links for every website or url, and also we provide the service to create URLs and use them everywhere for FREE of cost.
 
 ## Contributors:
-1) Kanwarpal Singh (Landing Page, Login-SignUP-Frontend,Integretion, README.md,Backend dubugging)
+1) Kanwarpal Singh (Landing Page, Login-SignUP-Frontend, Integretion, README.md, Backend dubugging)
 2) Manthan Pelne (Otp verification, QR generator Backend)
 3) Kabilan (Login,Signup Backend functionality)
 4) Kamlesh Das (Dashboard, Link Frontend-Backend,DarkMode)
