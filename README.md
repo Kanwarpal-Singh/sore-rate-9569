@@ -17,3 +17,22 @@ Description:- Shorts is a website where a user can get rid of long links and eas
 3) Kabilan (Login,Signup Backend functionality)
 4) Kamlesh Das (Dashboard, Link Frontend-Backend,DarkMode)
 
+##Landing Page
+![](https://i.ibb.co/TY2mBhd/Screenshot-2023-04-03-130554.png)
+![](https://i.ibb.co/WKTXkz0/Screenshot-2023-04-03-130650.png)
+![](https://i.ibb.co/GkHNbws/Screenshot-2023-04-03-130705.png)
+![](https://i.ibb.co/ZM4DsY3/Screenshot-2023-04-03-130717.png)
+![](https://i.ibb.co/7W8nygv/Screenshot-2023-04-03-130736.png)
+
+##SignUp Page
+![](https://i.ibb.co/684nmGQ/Screenshot-2023-04-03-161610.png)
+
+##Login page
+![](https://i.ibb.co/64Wbtb6/Screenshot-2023-04-03-161556.png)
+
+##Dashboard with white and DarkMode
+![](https://i.ibb.co/P6GRW0P/Screenshot-2023-04-03-161651.png)
+![](https://i.ibb.co/LC5QHMB/Screenshot-2023-04-03-161707.png)
+
+##Link Data Page
+![](https://i.ibb.co/Kjmj4jx/Screenshot-2023-04-03-161742.png)
